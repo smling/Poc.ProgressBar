@@ -1,0 +1,39 @@
+﻿<Window x:Class="Poc.ProgressBar.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Poc.ProgressBar"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="130" Width="500">
+    <Window.Resources>
+        <Style TargetType="ProgressBar">
+            <Setter Property="Height" Value="45" />
+            <Setter Property="Margin" Value="5" />
+            <Style.Triggers>
+                <Trigger Property="IsIndeterminate"  Value="False">
+                    <Setter Property="Background" Value="#80B5FFA9" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+    </Window.Resources>
+    
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo ProgressState="Normal" />
+    </Window.TaskbarItemInfo>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <ProgressBar Name="progTest" Grid.Row="0"></ProgressBar>
+        <StackPanel Orientation="Horizontal"  Grid.Row="1">
+            <Button Name="btnPause" Click="btnPause_Click">Pause</Button>
+            <Button Name="btnError" Click="btnError_Click">Error</Button>
+        </StackPanel>
+    </Grid>
+</Window>
